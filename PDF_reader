@@ -1,0 +1,26 @@
+#######!pip install pypdf
+#This program can be used to extract infromation from a pdf
+#importing pdf reading module
+from pypdf import PdfReader
+
+#variable declaration
+line_no=13
+start_pos=29
+end_pos=39
+pdf_path="/content/example.pdf"
+
+#read pdf
+reader = PdfReader(pdf_path)
+
+#Reading only first page
+page = reader.pages[0]
+
+#Extracting text from pdf into text format in a single string
+line = page.extract_text()
+
+#Spliting the text into multiple rows
+lst_str=line.split('\n')
+
+#Extracting required word(in this case date) using start index and end index
+date=lst_str[line_no][start_pos:end_pos]
+print(date)
